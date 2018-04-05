@@ -20,7 +20,7 @@ function sqlCheck($list, $sql){
         mysqli_close($list);
         die();
     } else {
-        echo "We added it to the database!";
+        header('Location: index.php');
         mysqli_close($list);
     }
 }

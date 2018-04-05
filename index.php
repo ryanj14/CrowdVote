@@ -22,6 +22,8 @@
     <br><br>
     <input type="submit" name="submit" value="Submit">
 </form> 
+<br><br> 
+<a href="user.php">User Thing</a>
 
 </body>
 </html>
