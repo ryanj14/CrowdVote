@@ -4,7 +4,7 @@
 
 <h2>Crowd Vote</h2>
 
-<form action=" ">
+<form action="crowdScript.php" method="post">
     Title:<br>
     <input type="text" name="title">
     <br>
@@ -20,7 +20,7 @@
     Option 4:<br>
     <input type="text" name="option4">
     <br><br>
-    <input type="submit" value="Submit">
+    <input type="submit" name="submit" value="Submit">
 </form> 
 
 </body>
