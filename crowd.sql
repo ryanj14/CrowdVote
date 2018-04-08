@@ -6,4 +6,8 @@ CREATE TABLE Crowd
     ,optionTwo      VARCHAR(30) NULL
     ,optionThree    VARCHAR(30) NULL
     ,optionFour     VARCHAR(30) NULL
+    ,oneVal         INT(6)      NULL DEFAULT 0
+    ,twoVal         INT(6)      NULL DEFAULT 0
+    ,threeVal       INT(6)      NULL DEFAULT 0
+    ,fourVal        INT(6)      NULL DEFAULT 0
 );
