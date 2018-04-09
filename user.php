@@ -7,7 +7,7 @@
                 FROM 
                     Crowd
                 WHERE
-                    id = 1 LIMIT 1";
+                    id = 2 LIMIT 1";
     $list = connect();
     $rows = mysqli_query($list, $results);
     $row = mysqli_fetch_assoc($rows)
@@ -25,14 +25,14 @@
     <?php
         echo '<input type="radio" name="choice" value="'  . $row['optionOne'] .  '">' . $row['optionOne'] . "<br>";
     
-        echo '<input type="radio" name="choice" value=" ' . $row['optionTwo'] . ' ">' . $row['optionTwo'] . "<br>";
+        echo '<input type="radio" name="choice" value="' . $row['optionTwo'] . ' ">' . $row['optionTwo'] . "<br>";
     
         if($row['optionThree'] != NULL){
-         echo '<input type="radio" name="choice" value=" ' . $row['optionThree'] . ' ">' . $row['optionThree'] . "<br>";
+         echo '<input type="radio" name="choice" value="' . $row['optionThree'] . '">' . $row['optionThree'] . "<br>";
         } 
 
         if($row['optionFour'] != NULL){
-         echo '<input type="radio" name="choice" value=" ' . $row['optionFour'] . ' ">' . $row['optionFour'] . "<br>";
+         echo '<input type="radio" name="choice" value="' . $row['optionFour'] . '">' . $row['optionFour'] . "<br>";
         }
     
     ?>
@@ -43,18 +43,28 @@
     if(isset($_GET['submit'])) {
         
         $choice = $_GET['choice'];
+        echo $choice;
+        $four = $row['optionFour'];
         
         if($choice == $row['optionOne']){
             $picked = "oneVal";
-        } else if($choice == $row['optionTwo']){
-            $picked = "twoVal";
-        } else if ($choice == $row['optionThree']){
-            $picked = "threeVal";
-        } else  if ($choice == $row['optionFour']){
-            $picked = "fourVal";
-        } else {
-            echo "Error";
         }
+        
+        if($choice == $row['optionTwo']){
+            $picked = "twoVal";
+        } 
+        
+        if($choice == $row['optionThree']){
+            echo "Hi";
+            $picked = "threeVal";
+        } 
+        
+        if($choice == $row['optionFour']){
+            $picked = "fourVal";
+        } 
+
+        echo $picked;
+        
         
         header('Location: userChoice.php?title=' . $row['title'] . '&value=' . $choice . '&option=' . $picked);
         
