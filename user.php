@@ -7,7 +7,7 @@
                 FROM 
                     Crowd
                 WHERE
-                    id = 2 LIMIT 1";
+                    id = 1 LIMIT 1";
     $list = connect();
     $rows = mysqli_query($list, $results);
     $row = mysqli_fetch_assoc($rows)
@@ -25,7 +25,7 @@
     <?php
         echo '<input type="radio" name="choice" value="'  . $row['optionOne'] .  '">' . $row['optionOne'] . "<br>";
     
-        echo '<input type="radio" name="choice" value="' . $row['optionTwo'] . ' ">' . $row['optionTwo'] . "<br>";
+        echo '<input type="radio" name="choice" value="' . $row['optionTwo'] . '">' . $row['optionTwo'] . "<br>";
     
         if($row['optionThree'] != NULL){
          echo '<input type="radio" name="choice" value="' . $row['optionThree'] . '">' . $row['optionThree'] . "<br>";

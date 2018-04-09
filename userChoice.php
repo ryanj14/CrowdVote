@@ -17,9 +17,6 @@
     $rows = mysqli_query($list, $results);
     $row = mysqli_fetch_assoc($rows);
 
-    echo $value;
-    echo $option;
-
     if(($value == $row['optionOne']) && ($option == 'oneVal')) {
         $selected = $row['oneVal'];
     } 
@@ -36,11 +33,7 @@
         $selected = $row['fourVal'];
     }
 
-    echo $selected . "<br>";
-
     $selected += 1;
-
-    echo $selected;
     
     $sql2 = "
             UPDATE
@@ -51,9 +44,7 @@
                 title = '$title'
                 ";
 
-    if (mysqli_query($list, $sql2)) {
-        echo "Record updated successfully";
-    } else {
+    if (!mysqli_query($list, $sql2)) {
         echo "Error updating record: " . mysqli_error($list);
     }
 ?>
@@ -62,6 +53,22 @@
 <body>
 
 <h2>Crowd Result</h2> 
+    
+<?php
+    $count = $row['oneVal'] + $row['twoVal'] + $row['threeVal'] + $row['fourVal']; 
+    echo $row['optionOne'] . ": " . floor(($row['oneVal'] * 100) / $count) . "%<br>";
+
+    echo $row['optionTwo'] . ": " . floor(($row['twoVal'] * 100) / $count) . "%<br>";
+
+    if($row['optionThree'] != NULL){
+     echo $row['optionThree'] . ": " . floor(($row['threeVal'] * 100) / $count) . "%<br>";
+    } 
+
+    if($row['optionFour'] != NULL){
+     echo $row['optionFour'] . ": " . floor(($row['fourVal'] * 100) / $count) . "%<br>";
+    }
+    echo "Total votes: " . $count;
+?>
     
 <a href="user.php">User Thing</a>
 
