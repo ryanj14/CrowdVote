@@ -54,13 +54,23 @@
 ?>
 <!DOCTYPE html>
 <html>
+    
+    <head>
+        <title>Crowd Vote</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <!-- Crowd Vote form validation -->
+        <script type="text/javascript" src="formValidation.js"></script>
+    </head>
+    
 <body>
 
 <h2>User Created Questions</h2>
 
 <?php echo $row['title']; ?>
     
-<form action=" " method="get">
+<form name="selection" action=" " method="get" onsubmit="return validateRadio()">
     
     <?php
         echo '<input type="radio" name="choice" value="'  . $row['optionOne'] .  '">' . $row['optionOne'] . "<br>";

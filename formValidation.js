@@ -43,3 +43,22 @@ function validateOption2() {
       return true;
     } 
 }
+
+function validateRadio(){
+    var radios = document.getElementsByName("choice");
+    var formValid = false;
+    var i = 0;
+
+    for(var i = 0; i < radios.length;i++){
+        if(radios[i].checked == true){
+            formValid = true;    
+        }
+    }
+
+    if (!formValid){  
+        alert("Select one!");
+        return formValid;
+    } else {
+        return formValid;
+    } 
+}
