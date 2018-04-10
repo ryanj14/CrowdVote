@@ -32,23 +32,23 @@
     $row = mysqli_fetch_assoc($rows);
 
     if (!isset($_SESSION["title"])) {
-        $_SESSION["title"] = $row['title'];
+        $_SESSION["title"] = htmlentities($row['title'], ENT_QUOTES, "UTF-8");
     }
 
     if (!isset($_SESSION["one"])) {
-        $_SESSION["one"] = $row['optionOne'];
+        $_SESSION["one"] = htmlentities($row['optionOne'], ENT_QUOTES, "UTF-8");
     }
 
     if (!isset($_SESSION["two"])) {
-        $_SESSION["two"] = $row['optionTwo'];
+        $_SESSION["two"] = htmlentities($row['optionTwo'], ENT_QUOTES, "UTF-8");
     }
 
     if (!isset($_SESSION["three"])) {
-        $_SESSION["three"] = $row['optionThree'];
+        $_SESSION["three"] = htmlentities($row['optionThree'], ENT_QUOTES, "UTF-8");
     }
 
     if (!isset($_SESSION["four"])) {
-        $_SESSION["four"] = $row['optionFour'];
+        $_SESSION["four"] = htmlentities($row['optionFour'], ENT_QUOTES, "UTF-8");
     }
 
 ?>

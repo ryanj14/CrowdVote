@@ -7,17 +7,11 @@
         // Connecting to the database
         $list = connect();
         
-        $titles  =    mysqli_real_escape_string($list, $_POST['title']);
-        $ones    =    mysqli_real_escape_string($list, $_POST['option1']);
-        $twos    =    mysqli_real_escape_string($list, $_POST['option2']);
-        $threes  =    mysqli_real_escape_string($list, $_POST['option3']);
-        $fours   =    mysqli_real_escape_string($list, $_POST['option4']); 
-        
-        $title = htmlentities($titles, ENT_QUOTES, "UTF-8");
-        $one = htmlentities($ones, ENT_QUOTES, "UTF-8");
-        $two = htmlentities($twos, ENT_QUOTES, "UTF-8");
-        $three = htmlentities($threes, ENT_QUOTES, "UTF-8");
-        $four = htmlentities($fours, ENT_QUOTES, "UTF-8");
+        $title  =    mysqli_real_escape_string($list, $_POST['title']);
+        $one    =    mysqli_real_escape_string($list, $_POST['option1']);
+        $two    =    mysqli_real_escape_string($list, $_POST['option2']);
+        $three  =    mysqli_real_escape_string($list, $_POST['option3']);
+        $four   =    mysqli_real_escape_string($list, $_POST['option4']); 
 
         $sql = "INSERT INTO Crowd 
                     (id, title, optionOne, optionTwo, optionThree, optionFour)
