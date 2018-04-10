@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
+    
+    <head>
+        <title>Crowd Vote</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <!-- Crowd Vote form validation -->
+        <script type="text/javascript" src="formValidation.js"></script>
+    </head>
+    
 <body>
 
 <h2>Crowd Vote</h2>
 
-<form action="crowdScript.php" method="post">
+<form name="crowdForm" action="crowdScript.php" method="post" onsubmit="return validateForm()">
     Title:<br>
     <input type="text" name="title">
     <br>

@@ -1,16 +1,56 @@
 <?php
+    session_start();
     require_once('mysqli_connect.php');
     include 'functions.php';
 
+    $list = connect();
+
+    $sql = "SELECT 
+                    * 
+                FROM 
+                    Crowd";
+
+    $cnt = mysqli_query($list, $sql);
+    $row_cnt = mysqli_num_rows($cnt);
+
+    function ran($row_cnt){
+        $rand = rand(1, $row_cnt);
+        return array('number1' => $rand);
+    }
+
+    $bb = ran($row_cnt);
+    $b = $bb['number1'];
+    
     $results = "SELECT 
                     * 
                 FROM 
                     Crowd
-                WHERE
-                    id = 1 LIMIT 1";
-    $list = connect();
+                ORDER BY RAND() LIMIT 1";
+    
+    
     $rows = mysqli_query($list, $results);
-    $row = mysqli_fetch_assoc($rows)
+    $row = mysqli_fetch_assoc($rows);
+
+    if (!isset($_SESSION["title"])) {
+        $_SESSION["title"] = $row['title'];
+    }
+
+    if (!isset($_SESSION["one"])) {
+        $_SESSION["one"] = $row['optionOne'];
+    }
+
+    if (!isset($_SESSION["two"])) {
+        $_SESSION["two"] = $row['optionTwo'];
+    }
+
+    if (!isset($_SESSION["three"])) {
+        $_SESSION["three"] = $row['optionThree'];
+    }
+
+    if (!isset($_SESSION["four"])) {
+        $_SESSION["four"] = $row['optionFour'];
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,42 +75,64 @@
          echo '<input type="radio" name="choice" value="' . $row['optionFour'] . '">' . $row['optionFour'] . "<br>";
         }
     
+    
+    if(isset($_GET['submit'])) {
+           
+        if (!isset($_SESSION["choice"])) {
+                $_SESSION["choice"] = $_GET['choice'];
+                $choice = $_SESSION["choice"];
+            echo "User selected ".$choice."<br>";
+        }
+        
+        $test1 = $_SESSION["one"];
+        $test2 = $_SESSION["two"];
+        $test3 = $_SESSION["three"];
+        $test4 = $_SESSION["four"];
+        
+        echo "1: ".$test1 . "<br>";
+        echo "2: ".$test2 . "<br>";
+        echo "3: ".$test3 . "<br>";
+        echo "4: ".$test4 . "<br>";
+
+        if($_SESSION["choice"] == $_SESSION["one"]){
+            $picked = "oneVal";
+            if (!isset($_SESSION["option"])) {
+                $_SESSION["option"] = $picked;
+                echo $picked;
+            } 
+        } 
+        
+        if($_SESSION["choice"] == $_SESSION["two"]){
+            $picked = "twoVal";
+            if (!isset($_SESSION["option"])) {
+                $_SESSION["option"] = $picked;
+                echo $picked;
+            } 
+        } 
+        
+        if($_SESSION["choice"] == $_SESSION["three"]){
+            $picked = "threeVal";
+            if (!isset($_SESSION["option"])) {
+                $_SESSION["option"] = $picked;
+                echo $picked;
+            } 
+        } 
+        
+        if($_SESSION["choice"] == $_SESSION["four"]){
+            $picked = "fourVal";
+            if (!isset($_SESSION["option"])) {
+                $_SESSION["option"] = $picked;
+                echo $picked;
+            } 
+        } 
+        echo $picked;
+
+        header("Location: userChoice.php"); 
+    }
+
     ?>
     <input type="submit" name="submit" value="Submit">
 </form> 
-    
-<?php
-    if(isset($_GET['submit'])) {
-        
-        $choice = $_GET['choice'];
-        echo $choice;
-        $four = $row['optionFour'];
-        
-        if($choice == $row['optionOne']){
-            $picked = "oneVal";
-        }
-        
-        if($choice == $row['optionTwo']){
-            $picked = "twoVal";
-        } 
-        
-        if($choice == $row['optionThree']){
-            echo "Hi";
-            $picked = "threeVal";
-        } 
-        
-        if($choice == $row['optionFour']){
-            $picked = "fourVal";
-        } 
-
-        echo $picked;
-        
-        
-        header('Location: userChoice.php?title=' . $row['title'] . '&value=' . $choice . '&option=' . $picked);
-        
-        mysqli_close($list);
-    }
-?>
 
 <br><br> 
 <a href="index.php">Home</a>
