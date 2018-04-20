@@ -32,23 +32,23 @@
     $row = mysqli_fetch_assoc($rows);
 
     if (!isset($_SESSION["title"])) {
-        $_SESSION["title"] = htmlentities($row['title'], ENT_QUOTES, "UTF-8");
+        $_SESSION["title"] = $row['title'];
     }
 
     if (!isset($_SESSION["one"])) {
-        $_SESSION["one"] = htmlentities($row['optionOne'], ENT_QUOTES, "UTF-8");
+        $_SESSION["one"] = $row['optionOne'];
     }
 
     if (!isset($_SESSION["two"])) {
-        $_SESSION["two"] = htmlentities($row['optionTwo'], ENT_QUOTES, "UTF-8");
+        $_SESSION["two"] = $row['optionTwo'];
     }
 
     if (!isset($_SESSION["three"])) {
-        $_SESSION["three"] = htmlentities($row['optionThree'], ENT_QUOTES, "UTF-8");
+        $_SESSION["three"] = $row['optionThree'];
     }
 
     if (!isset($_SESSION["four"])) {
-        $_SESSION["four"] = htmlentities($row['optionFour'], ENT_QUOTES, "UTF-8");
+        $_SESSION["four"] = $row['optionFour'];
     }
 
 ?>
@@ -86,59 +86,42 @@
         }
     
     
-    if(isset($_GET['submit'])) {
-           
-        if (!isset($_SESSION["choice"])) {
-                $_SESSION["choice"] = $_GET['choice'];
-                $choice = $_SESSION["choice"];
-            echo "User selected ".$choice."<br>";
+        if(isset($_GET['submit'])) {
+
+            if (!isset($_SESSION["choice"])) {
+                    $_SESSION["choice"] = $_GET['choice'];
+                    $choice = $_SESSION["choice"];
+            }
+
+            if($_SESSION["choice"] == $_SESSION["one"]){
+                $picked = "oneVal";
+                if (!isset($_SESSION["option"])) {
+                    $_SESSION["option"] = $picked;
+                } 
+            } 
+
+            if($_SESSION["choice"] == $_SESSION["two"]){
+                $picked = "twoVal";
+                if (!isset($_SESSION["option"])) {
+                    $_SESSION["option"] = $picked;
+                } 
+            } 
+
+            if($_SESSION["choice"] == $_SESSION["three"]){
+                $picked = "threeVal";
+                if (!isset($_SESSION["option"])) {
+                    $_SESSION["option"] = $picked;
+                } 
+            } 
+
+            if($_SESSION["choice"] == $_SESSION["four"]){
+                $picked = "fourVal";
+                if (!isset($_SESSION["option"])) {
+                    $_SESSION["option"] = $picked;
+                } 
+            } 
+            header("Location: userChoice.php"); 
         }
-        
-        $test1 = $_SESSION["one"];
-        $test2 = $_SESSION["two"];
-        $test3 = $_SESSION["three"];
-        $test4 = $_SESSION["four"];
-        
-        echo "1: ".$test1 . "<br>";
-        echo "2: ".$test2 . "<br>";
-        echo "3: ".$test3 . "<br>";
-        echo "4: ".$test4 . "<br>";
-
-        if($_SESSION["choice"] == $_SESSION["one"]){
-            $picked = "oneVal";
-            if (!isset($_SESSION["option"])) {
-                $_SESSION["option"] = $picked;
-                echo $picked;
-            } 
-        } 
-        
-        if($_SESSION["choice"] == $_SESSION["two"]){
-            $picked = "twoVal";
-            if (!isset($_SESSION["option"])) {
-                $_SESSION["option"] = $picked;
-                echo $picked;
-            } 
-        } 
-        
-        if($_SESSION["choice"] == $_SESSION["three"]){
-            $picked = "threeVal";
-            if (!isset($_SESSION["option"])) {
-                $_SESSION["option"] = $picked;
-                echo $picked;
-            } 
-        } 
-        
-        if($_SESSION["choice"] == $_SESSION["four"]){
-            $picked = "fourVal";
-            if (!isset($_SESSION["option"])) {
-                $_SESSION["option"] = $picked;
-                echo $picked;
-            } 
-        } 
-        echo $picked;
-
-        header("Location: userChoice.php"); 
-    }
 
     ?>
     <input type="submit" name="submit" value="Submit">

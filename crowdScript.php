@@ -7,18 +7,33 @@
         // Connecting to the database
         $list = connect();
         
-        $title  =    mysqli_real_escape_string($list, $_POST['title']);
-        $one    =    mysqli_real_escape_string($list, $_POST['option1']);
-        $two    =    mysqli_real_escape_string($list, $_POST['option2']);
-        $three  =    mysqli_real_escape_string($list, $_POST['option3']);
-        $four   =    mysqli_real_escape_string($list, $_POST['option4']); 
+        $title  =    $_POST['title'];
+        $one    =    $_POST['option1'];
+        $two    =    $_POST['option2'];
+        $three  =    $_POST['option3'];
+        $four   =    $_POST['option4']; 
 
-        $sql = "INSERT INTO Crowd 
+        /* create a prepared statement */
+        if ($stmt = mysqli_prepare($list, 
+               "INSERT INTO Crowd 
                     (id, title, optionOne, optionTwo, optionThree, optionFour)
                 VALUES 
-                    (NULL,'$title', '$one', '$two', '$three', '$four')";
+                    (NULL, ?, ?, ?, ?, ?)")) {
 
-        // Checks to see if it is actually adds it to the database
-        sqlCheck($list, $sql);
+            /* bind parameters for markers */
+            mysqli_stmt_bind_param($stmt, "sssss", $title, $one, $two, $three, $four);
+
+            /* execute query */
+            mysqli_stmt_execute($stmt);
+
+            /* close statement */
+            mysqli_stmt_close($stmt);
+            
+            header('Location: index.php');
+        } else {
+            echo "Error with prepare statement!\n";
+            mysqli_close($list);
+            die();
+        }
     }
 ?>

@@ -3,8 +3,10 @@
     require_once('mysqli_connect.php');
     include 'functions.php';
 
+    $list = connect();
+
     if (isset($_SESSION["title"])) {
-        $title = $_SESSION["title"];
+        $title = mysqli_real_escape_string($list, $_SESSION["title"]);
     }
 
     if (isset($_SESSION["option"])) {
@@ -51,23 +53,15 @@
     unset($_SESSION["three"]);
     unset($_SESSION["four"]);
 
-    echo $value;
-    echo $value1;
-    echo $value2;
-    echo $value3;
-    echo $value4;
-
-    $list = connect();
-
     $results = "SELECT 
                     * 
                 FROM 
                     Crowd
                 WHERE
-                    title = '$title' LIMIT 1";
+                    title = '$title' ";
 
-    $rows = mysqli_query($list, $results);
-    $row = mysqli_fetch_assoc($rows);
+    $rows2 = mysqli_query($list, $results);
+    $row = mysqli_fetch_assoc($rows2);
 
     if(($option == $value1) && ($value == 'oneVal')) {
         $selected = $row['oneVal'];
@@ -93,8 +87,7 @@
             SET
                 $value=$selected
             WHERE
-                title = '$title'
-                ";
+                title = '$title' ";
 
     if (!mysqli_query($list, $sql2)) {
         echo "Error updating record: " . mysqli_error($list);
@@ -103,6 +96,13 @@
 ?>
 <!DOCTYPE html>
 <html>
+    
+    <head>
+        <title>Crowd Vote</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+    </head>
+    
 <body>
 
 <h2>Crowd Result</h2> 
@@ -135,9 +135,9 @@
     }
     echo "Total votes: " . $count . "<br>";
 ?>
-<br>
-<a href="index.php">Home</a>
-<a href="user.php">User Thing</a>
+    <br>
+    <a href="index.php">Home</a>
+    <a href="user.php">Pick Another</a>
 
 </body>
 </html>

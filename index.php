@@ -34,7 +34,7 @@
 </form> 
 <br><br> 
     
-<a href="user.php">User Thing</a>
+<a href="user.php">Random Choice</a>
 
 </body>
 </html>
