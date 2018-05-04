@@ -2,6 +2,7 @@
     session_start();
     require_once('mysqli_connect.php');
     include 'functions.php';
+    ob_start();
 
     $list = connect();
 
@@ -122,7 +123,7 @@
             } 
             header("Location: userChoice.php"); 
         }
-
+        ob_end_flush();
     ?>
     <input type="submit" name="submit" value="Submit">
 </form> 
