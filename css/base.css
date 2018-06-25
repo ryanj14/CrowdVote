@@ -1,0 +1,36 @@
+/*
+    base.css
+    Author: Ryan Joseph
+    Version: 1.0
+    Date: 6/25/2018 
+*/
+
+h1 {
+    text-align: center;
+}
+
+.container-fluid {
+    width: 50%;
+}
+
+.formInput {
+    width: 40%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.formInput.row {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Mobile response */
+@media screen and (min-width:300px) and (max-width:588px){	
+	.formInput {
+        width: 100%;
+    }
+
+    .formInput > form > input {
+        margin-top: 5%;
+    }
+}
