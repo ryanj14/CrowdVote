@@ -1,3 +1,10 @@
+<!-- 
+    user.php
+    Author: Ryan Joseph
+    Version: 1.1
+    Date: 6/25/2018
+    The page where the user can select an option
+-->
 <?php
     session_start();
     require_once('mysqli_connect.php');

@@ -1,3 +1,10 @@
+<!-- 
+    userChoice.php
+    Author: Ryan Joseph
+    Version: 1.1
+    Date: 6/25/2018
+    The page where the user can see their option results
+-->
 <?php
     session_start();
     require_once('mysqli_connect.php');
