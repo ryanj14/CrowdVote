@@ -34,7 +34,7 @@
     
 <body lang="en">
 
-    <h2>Crowd Vote</h2>
+    <h1>Crowd Vote</h1>
 
     <form   name="crowdForm" 
             action="crowdScript.php"   
