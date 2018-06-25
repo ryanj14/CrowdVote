@@ -67,14 +67,12 @@
                     <label for="option4">Option 4:</label>
                     <input type="option4" class="form-control" id="option4">
                 </div>
-                <br><br>
-                <input type="submit" class="btn btn-default" name="submit" value="Submit">
+                <div class="wrapper">
+                    <input type="submit" class="btn btn-default" name="submit" value="Submit">
+                    <a href="user.php" class="btn btn-default">Random Choice</a>
+                </div>
             </form> 
-        </div>
-    </div>
-    <br><br> 
-    
-    <a href="user.php">Random Choice</a>
-
+        </div><!-- formInput row -->
+    </div><!-- container-fluid -->
 </body>
 </html>
