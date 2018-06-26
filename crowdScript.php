@@ -2,7 +2,7 @@
     require_once('mysqli_connect.php');
     include_once("functions.php");
 
-    if(isset($_POST['submit'])) { 
+    if(isset($_POST['Submit']) && !empty($_POST['Submit'])) { 
         
         // Connecting to the database
         $list = connect();
@@ -16,7 +16,7 @@
         /* create a prepared statement */
         if ($stmt = mysqli_prepare($list, 
                "INSERT INTO Crowd 
-                    (id, title, optionOne, optionTwo, optionThree, optionFour)
+                    (id, `title`, `optionOne`, `optionTwo`, `optionThree`, `optionFour`)
                 VALUES 
                     (NULL, ?, ?, ?, ?, ?)")) {
 
@@ -29,11 +29,14 @@
             /* close statement */
             mysqli_stmt_close($stmt);
             
+            mysqli_close($list);
             header('Location: index.php');
         } else {
             echo "Error with prepare statement!\n";
             mysqli_close($list);
             die();
         }
+    } else {
+        echo "HTML error\n";
     }
 ?>

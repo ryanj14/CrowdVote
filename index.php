@@ -16,7 +16,7 @@
 
         <title>Crowd Vote</title>
 
-        <!-- jQuery-->
+        <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <!-- Latest compiled and minified CSS -->
@@ -35,33 +35,33 @@
 <body lang="en">
     <div class="container-fluid">
     <h1>Crowd Vote</h1>
-        <div class="formInput row needs-validation" novalidate>
+        <div class="formInput row">
             <form   name="crowdForm" 
                     action="crowdScript.php"   
                     method="post" 
                     onsubmit="return validateForm()">
                 <div class="form-group">
                     <label for="title">Title:</label>
-                    <input type="title" class="form-control" id="title" required>
+                    <input name ="title" type="title" class="form-control" id="title" required>
                 </div>
                 <div class="form-group">
                     <label for="option1">Option 1:</label>
-                    <input type="option1" class="form-control" id="option1" required>
+                    <input name="option1" type="option1" class="form-control" id="option1" required>
                 </div>
                 <div class="form-group">
                     <label for="option2">Option 2:</label>
-                    <input type="option2" class="form-control" id="option2" required>
+                    <input name="option2" type="option2" class="form-control" id="option2" required>
                 </div>
                 <div class="form-group">
                     <label for="option3">Option 3:</label>
-                    <input type="option3" class="form-control" id="option3">
+                    <input name="option3" type="option3" class="form-control" id="option3">
                 </div>
                 <div class="form-group">
                     <label for="option4">Option 4:</label>
-                    <input type="option4" class="form-control" id="option4">
+                    <input name="option4" type="option4" class="form-control" id="option4">
                 </div>
                 <div class="wrapper">
-                    <input type="submit" class="btn btn-default" name="submit" value="Submit">
+                    <input type="Submit" class="btn btn-default" name="Submit" value="Submit">
                     <a href="user.php" class="btn btn-default">Random Choice</a>
                 </div>
             </form> 
