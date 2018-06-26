@@ -33,27 +33,24 @@
         <script type="text/javascript" src="formValidation.js"></script>
     </head>
 <body lang="en">
-
-    <h1>Crowd Vote</h1>
-
     <div class="container-fluid">
-        <div class="formInput row">
+    <h1>Crowd Vote</h1>
+        <div class="formInput row needs-validation" novalidate>
             <form   name="crowdForm" 
-                    class="form-inline"
                     action="crowdScript.php"   
                     method="post" 
                     onsubmit="return validateForm()">
                 <div class="form-group">
                     <label for="title">Title:</label>
-                    <input type="title" class="form-control" id="title">
+                    <input type="title" class="form-control" id="title" required>
                 </div>
                 <div class="form-group">
                     <label for="option1">Option 1:</label>
-                    <input type="option1" class="form-control" id="option1">
+                    <input type="option1" class="form-control" id="option1" required>
                 </div>
                 <div class="form-group">
                     <label for="option2">Option 2:</label>
-                    <input type="option2" class="form-control" id="option2">
+                    <input type="option2" class="form-control" id="option2" required>
                 </div>
                 <div class="form-group">
                     <label for="option3">Option 3:</label>
