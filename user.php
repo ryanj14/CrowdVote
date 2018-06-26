@@ -67,7 +67,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="css/base.css" type="text/css" title="Default">
+
         <title>Crowd Vote</title>
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <!-- Latest compiled and minified CSS -->
         <link   rel="stylesheet"  
@@ -80,79 +86,81 @@
                 href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
                 integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
                 crossorigin="anonymous">
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
-                crossorigin="anonymous"></script>
         
         <!-- Crowd Vote form validation -->
         <script type="text/javascript" src="formValidation.js"></script>
     </head>
 <body lang="en">
 
-<h1>User Created Questions</h1>
+<div class="container-fluid">
 
-<?php echo $row['title']; ?>
+<?php echo '<h1>' . $row['title'] . '</h1>'; ?>
     
-<form name="selection" action=" " method="get" onsubmit="return validateRadio()">
-    
+<form name="selection" action=" " class="userForm" method="get" onsubmit="return validateRadio()">   
+    <div class="form-check">
+        <?php echo '<input class="form-check-input" type="radio" name="choice" value="'  . $row['optionOne'] .  '">' . $row['optionOne'] . "<br>"; ?>
+    </div>
+    <div class="form-check">
+        <?php echo '<input class="form-check-input" type="radio" name="choice" value="' . $row['optionTwo'] . '">' . $row['optionTwo'] . "<br>"; ?>
+    </div>
     <?php
-        echo '<input type="radio" name="choice" value="'  . $row['optionOne'] .  '">' . $row['optionOne'] . "<br>";
-    
-        echo '<input type="radio" name="choice" value="' . $row['optionTwo'] . '">' . $row['optionTwo'] . "<br>";
-    
         if($row['optionThree'] != NULL){
-         echo '<input type="radio" name="choice" value="' . $row['optionThree'] . '">' . $row['optionThree'] . "<br>";
+            echo '<div class="form-check">';
+                echo '<input type="radio" name="choice" value="' . $row['optionThree'] . '">' . $row['optionThree'] . "<br>";
+            echo '</div>';
         } 
 
         if($row['optionFour'] != NULL){
-         echo '<input type="radio" name="choice" value="' . $row['optionFour'] . '">' . $row['optionFour'] . "<br>";
+            echo '<div class="form-check">';
+                echo '<input type="radio" name="choice" value="' . $row['optionFour'] . '">' . $row['optionFour'] . "<br>";
+            echo '</div>';
         }
-    
-        if(isset($_GET['submit'])) {
-
-            if (!isset($_SESSION["choice"])) {
-                    $_SESSION["choice"] = $_GET['choice'];
-                    $choice = $_SESSION["choice"];
-            }
-
-            if($_SESSION["choice"] == $_SESSION["one"]){
-                $picked = "oneVal";
-                if (!isset($_SESSION["option"])) {
-                    $_SESSION["option"] = $picked;
-                } 
-            } 
-
-            if($_SESSION["choice"] == $_SESSION["two"]){
-                $picked = "twoVal";
-                if (!isset($_SESSION["option"])) {
-                    $_SESSION["option"] = $picked;
-                } 
-            } 
-
-            if($_SESSION["choice"] == $_SESSION["three"]){
-                $picked = "threeVal";
-                if (!isset($_SESSION["option"])) {
-                    $_SESSION["option"] = $picked;
-                } 
-            } 
-
-            if($_SESSION["choice"] == $_SESSION["four"]){
-                $picked = "fourVal";
-                if (!isset($_SESSION["option"])) {
-                    $_SESSION["option"] = $picked;
-                } 
-            } 
-            header("Location: userChoice.php"); 
-        }
-        ob_end_flush();
     ?>
-    <input type="submit" name="submit" value="Submit">
+    <div class="wrapper2">
+        <input type="submit" class="btn btn-default" name="submit" value="Vote">
+    </div>
+    <a href="index.php" class="btn btn-default">Home</a>
 </form> 
-
-<br><br> 
-<a href="index.php">Home</a>
-    
+</div>
 </body>
 </html>
+
+<?
+if(isset($_GET['submit'])) {
+
+if (!isset($_SESSION["choice"])) {
+        $_SESSION["choice"] = $_GET['choice'];
+        $choice = $_SESSION["choice"];
+}
+
+if($_SESSION["choice"] == $_SESSION["one"]){
+    $picked = "oneVal";
+    if (!isset($_SESSION["option"])) {
+        $_SESSION["option"] = $picked;
+    } 
+} 
+
+if($_SESSION["choice"] == $_SESSION["two"]){
+    $picked = "twoVal";
+    if (!isset($_SESSION["option"])) {
+        $_SESSION["option"] = $picked;
+    } 
+} 
+
+if($_SESSION["choice"] == $_SESSION["three"]){
+    $picked = "threeVal";
+    if (!isset($_SESSION["option"])) {
+        $_SESSION["option"] = $picked;
+    } 
+} 
+
+if($_SESSION["choice"] == $_SESSION["four"]){
+    $picked = "fourVal";
+    if (!isset($_SESSION["option"])) {
+        $_SESSION["option"] = $picked;
+    } 
+} 
+header("Location: userChoice.php"); 
+}
+ob_end_flush();
+?>

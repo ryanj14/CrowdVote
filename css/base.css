@@ -64,6 +64,24 @@ input.btn.btn-default {
     margin-right: auto;
 }
 
+/* user.php */
+form.userForm {
+    width:50%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.homeButton {
+    width: 20%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper {
+    margin-top: 10%;
+}
+
 /* Mobile response */
 @media screen and (min-width:300px) and (max-width:588px){	
 	.formInput {
