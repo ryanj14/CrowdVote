@@ -102,13 +102,16 @@
     mysqli_close($list);
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
         <title>Crowd Vote</title>
+
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="css/base.css" type="text/css" title="Default">
 
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -125,10 +128,10 @@
                 integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
                 crossorigin="anonymous">
     </head>
-<body lang="en">
+<body>
 
-<h2>Crowd Result</h2> 
-    
+<main class="container-fluid">
+<h1>Crowd Result</h1> 
 <?php  
     $results2 = "SELECT 
                     * 
@@ -141,7 +144,7 @@
     $rows = mysqli_query($list, $results2);
     $row = mysqli_fetch_assoc($rows);
     
-    echo $row['title']. "<br>";
+    echo '<h2>' . $row['title'] . "</h2>";
     $count = $row['oneVal'] + $row['twoVal'] + $row['threeVal'] + $row['fourVal']; 
     echo $row['optionOne'] . ": " . floor(($row['oneVal'] * 100) / $count) . "%<br>";
 
@@ -156,9 +159,10 @@
     }
     echo "Total votes: " . $count . "<br>";
 ?>
-    <br>
-    <a href="index.php">Home</a>
-    <a href="user.php">Pick Another</a>
-
+</main>
+    <div class="linkButtons">
+        <a href="index.php">Home</a>
+        <a href="user.php">Pick Another</a>
+    </div>
 </body>
 </html>
