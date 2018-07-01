@@ -1,10 +1,3 @@
-<!-- 
-    userScript.php
-    Author: Ryan Joseph
-    Version: 1.0
-    Date: 6/30/2018
-    The script used to handle the form input from user.php
--->
 <?php
 if(isset($_GET['submit'])) {
 

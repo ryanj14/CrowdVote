@@ -62,7 +62,7 @@
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -91,7 +91,7 @@
         <!-- Crowd Vote form validation -->
         <script type="text/javascript" src="formValidation.js"></script>
     </head>
-<body lang="en">
+<body>
 
 <div class="container-fluid">
 
@@ -117,11 +117,12 @@
             echo '</div>';
         }
     ?>
-    <div class="wrapper2">
+    <div class="wrapper">
         <input type="submit" class="btn btn-default" name="submit" value="Vote">
+        <a href="index.php" class="btn btn-default">Home</a>
     </div>
-    <a href="index.php" class="btn btn-default">Home</a>
 </form> 
+</div>
 </div>
 </body>
 </html>
