@@ -148,17 +148,31 @@
     $row = mysqli_fetch_assoc($rows);
     
     echo '<h2>' . $row['title'] . "</h2>";
-    $count = $row['oneVal'] + $row['twoVal'] + $row['threeVal'] + $row['fourVal']; 
-    echo $row['optionOne'] . ": " . floor(($row['oneVal'] * 100) / $count) . "%<br>";
 
-    echo $row['optionTwo'] . ": " . floor(($row['twoVal'] * 100) / $count) . "%<br>";
+    $count = $row['oneVal'] + $row['twoVal'] + $row['threeVal'] + $row['fourVal']; 
+
+    echo '<div class="results">';
+        echo '<p>' .  $row['optionOne'] . ':</p>';
+        echo '<p>' . floor(($row['oneVal'] * 100) / $count) . '%</p>';
+    echo '</div>';
+
+    echo '<div class="results">';
+        echo '<p>' .  $row['optionTwo'] . ':</p>';
+        echo '<p>' . floor(($row['twoVal'] * 100) / $count) . '%</p>';
+    echo '</div>';
 
     if($row['optionThree'] != NULL){
-     echo $row['optionThree'] . ": " . floor(($row['threeVal'] * 100) / $count) . "%<br>";
+        echo '<div class="results">';
+            echo '<p>' .  $row['optionThree'] . ':</p>';
+            echo '<p>' . floor(($row['threeVal'] * 100) / $count) . '%</p>';
+        echo '</div>';
     } 
 
     if($row['optionFour'] != NULL){
-     echo $row['optionFour'] . ": " . floor(($row['fourVal'] * 100) / $count) . "%<br>";
+     echo '<div class="results">';
+        echo '<p>' .  $row['optionFour'] . ':</p>';
+        echo '<p>' . floor(($row['fourVal'] * 100) / $count) . '%</p>';
+    echo '</div>';
     }
 ?>
     <div class="tally">
