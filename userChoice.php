@@ -134,7 +134,7 @@
 <body>
 
 <main class="container-fluid">
-<h1>Crowd Result</h1> 
+<h1>Crowd Results</h1> 
 <?php  
     $results2 = "SELECT 
                     * 
@@ -160,8 +160,11 @@
     if($row['optionFour'] != NULL){
      echo $row['optionFour'] . ": " . floor(($row['fourVal'] * 100) / $count) . "%<br>";
     }
-    echo "Total votes: " . $count . "<br>";
 ?>
+    <div class="tally">
+        <?php echo "Total votes: " . $count . "<br>"; ?>
+    </div>
+
 </main>
     <div class="linkButtons">
         <a href="index.php">Home</a>

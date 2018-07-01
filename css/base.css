@@ -1,8 +1,8 @@
 /*
     base.css
     Author: Ryan Joseph
-    Version: 1.0
-    Date: 6/25/2018 
+    Version: 1.1
+    Date: 7/1/2018 
 */
 
 html, body {
@@ -14,6 +14,7 @@ html {
     height: 100%;
 }
 
+/* Content in the center of page */
 body {
     min-height: 100%;
     display: -webkit-box;
@@ -28,7 +29,7 @@ body {
     flex-direction: column;
 }
 
-h1, h2 {
+h1 {
     text-align: center;
 }
 
@@ -83,14 +84,27 @@ form.userForm {
     margin-top: 10%;
 }
 
+/* userChoice.php section */
+.container-fluid > h2 {
+    text-align: center;
+    margin-bottom: 15%;
+}
+
+/* Home and Pick Another link div */
 .linkButtons {
     display: flex;
     justify-content: space-between;
-    width: 50%;
-    margin-top: 10%;
+    width: 20%;
+    margin-top: 5%;
     margin-right: auto;
     margin-left: auto;
 }
+
+/* Total votes div */
+.tally {
+    margin-top: 10%;
+    text-align: center;
+} /* End of userChoice.php section */
 
 /* Mobile response */
 @media screen and (min-width:300px) and (max-width:588px){	
@@ -100,5 +114,13 @@ form.userForm {
 
     .formInput > form > input {
         margin-top: 5%;
+    }
+}
+
+/* For mobile phones: */
+@media only screen and (max-width: 768px) {
+    .linkButtons {
+        margin-top: 10%;
+        width: 40%;
     }
 }
