@@ -68,7 +68,7 @@ input.btn.btn-default {
 
 /* user.php */
 form.userForm {
-    width:50%;
+    width: 70%;
     margin-right: auto;
     margin-left: auto;
 }
@@ -85,6 +85,11 @@ form.userForm a {
 }
 
 .wrapper {
+    margin-top: 10%;
+}
+
+.wrapper2 {
+    width:50%;
     margin-top: 10%;
 }
 

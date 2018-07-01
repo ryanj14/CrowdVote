@@ -97,7 +97,8 @@
 
 <?php echo '<h1>' . $row['title'] . '</h1>'; ?>
     
-<form name="selection" action=" " class="userForm" method="get" onsubmit="return validateRadio()">   
+<div class="formInput row">
+<form name="selection" action=" " method="get" onsubmit="return validateRadio()">   
     <div class="form-check">
         <?php echo '<input class="form-check-input" type="radio" name="choice" value="'  . $row['optionOne'] .  '">' . $row['optionOne'] . "<br>"; ?>
     </div>
@@ -118,10 +119,11 @@
         }
     ?>
     <div class="wrapper">
-        <input type="submit" class="btn btn-default" name="submit" value="Vote">
+        <input type="Submit" class="btn btn-default" name="submit" value="Vote">
         <a href="index.php" class="btn btn-default">Home</a>
     </div>
 </form> 
+    </div>
 </div>
 </div>
 </body>
