@@ -12,8 +12,10 @@
 
     $list = connect();
 
-    if (isset($_SESSION["title"])) {
+    if (isset($_SESSION["title"]) && !empty($_SESSION["title"])) {
         $title = mysqli_real_escape_string($list, $_SESSION["title"]);
+    } else {
+        header("Location: user.php"); 
     }
 
     if (isset($_SESSION["option"])) {
@@ -52,13 +54,14 @@
         echo "error";
     }
 
+    
     unset($_SESSION["title"]);
     unset($_SESSION["option"]);
     unset($_SESSION["choice"]);
     unset($_SESSION["one"]);
     unset($_SESSION["two"]);
     unset($_SESSION["three"]);
-    unset($_SESSION["four"]);
+    unset($_SESSION["four"]); 
 
     $results = "SELECT 
                     * 
