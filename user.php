@@ -98,11 +98,11 @@
         <!-- Crowd Vote form validation -->
         <script type="text/javascript" src="formValidation.js"></script>
     </head>
-<body>
+<body id="user">
 
 <div class="container-fluid">
 
-<?php echo '<h1>' . $row['title'] . '</h1>'; ?>
+<?php echo '<h1 class="userH1">' . $row['title'] . '</h1>'; ?>
     
 <div class="formInput row">
 <form name="selection" action=" " method="get" onsubmit="return validateRadio()">   

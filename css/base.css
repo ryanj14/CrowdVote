@@ -33,6 +33,14 @@ h1 {
     text-align: center;
 }
 
+.userH1 {
+    margin-bottom: 2%;
+}
+
+#user > .container-fluid {
+    width: 100%;
+}
+
 .formInput {
     width: 40%;
 }
@@ -77,6 +85,13 @@ form.userForm a {
     text-align: center;
 }
 
+.form-check {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+}
+
 .homeButton {
     width: 20%;
     margin-top: 5%;
@@ -89,8 +104,16 @@ form.userForm a {
 }
 
 .wrapper2 {
+    display: flex;
+    justify-content: space-between;
     width:50%;
     margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper2 > .btn.btn-default {
+    margin: 0;
 }
 
 .test {
@@ -142,5 +165,9 @@ form.userForm a {
     .linkButtons {
         margin-top: 10%;
         width: 40%;
+    }
+
+    .userH1 {
+        margin-bottom: 10%;
     }
 }
