@@ -20,15 +20,15 @@
     $rows = mysqli_query($link, $results);
     $row = mysqli_fetch_assoc($rows);
 
-    if (!isset($_SESSION["title"])  && !empty($_POST['title'])) {
+    if (!isset($_SESSION["title"])  && empty($_SESSION['title'])) {
         $_SESSION["title"] = $row['title'];
     }
 
-    if (!isset($_SESSION["one"]) && !empty($_POST['one'])) {
+    if (!isset($_SESSION["one"]) && empty($_SESSION['one'])) {
         $_SESSION["one"] = $row['optionOne'];
     }
 
-    if (!isset($_SESSION["two"]) && !empty($_POST['two'])) {
+    if (!isset($_SESSION["two"]) && empty($_SESSION['two'])) {
         $_SESSION["two"] = $row['optionTwo'];
     }
 

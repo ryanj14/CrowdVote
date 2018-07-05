@@ -21,37 +21,37 @@
     if (isset($_SESSION["option"])) {
         $value = $_SESSION["option"];
     } else {
-        echo "error";
+        echo "error: option\n";
     }
 
     if (isset($_SESSION["choice"])) {
         $option = mysqli_real_escape_string($list, $_SESSION["choice"]);
     } else {
-        echo "error";
+        echo "error: choice\n";
     }
 
     if (isset($_SESSION["one"])) {
         $value1 = mysqli_real_escape_string($list, $_SESSION["one"]);
     } else {
-        echo "error";
+        echo "error: one\n";
     }
 
     if (isset($_SESSION["two"])) {
         $value2 = mysqli_real_escape_string($list, $_SESSION["two"]);
     } else {
-        echo "error";
+        echo "error: two\n";
     }
     
     if (isset($_SESSION["three"])) {
         $value3 = mysqli_real_escape_string($list, $_SESSION["three"]);
     } else {
-        echo "error";
+        echo "error: three\n";
     }
 
     if (isset($_SESSION["four"])) {
         $value4 = mysqli_real_escape_string($list, $_SESSION["four"]);
     } else {
-        echo "error";
+        echo "error: four\n";
     }
     
     unset($_SESSION["title"]);
