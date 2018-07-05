@@ -1,8 +1,8 @@
 <!-- 
     user.php
     Author: Ryan Joseph
-    Version: 1.1
-    Date: 6/25/2018
+    Version: 1.2
+    Date: 7/5/2018
     The page where the user can select an option
 -->
 <?php
@@ -12,43 +12,23 @@
     include 'userScript.php';
     ob_start();
 
-    $list = connect();
-
-    $sql = "SELECT 
-                    * 
-                FROM 
-                    Crowd";
-
-    $cnt = mysqli_query($list, $sql);
-    $row_cnt = mysqli_num_rows($cnt);
-
-    function ran($row_cnt){
-        $rand = rand(1, $row_cnt);
-        return array('number1' => $rand);
-    }
-
-    $bb = ran($row_cnt);
-    $b = $bb['number1'];
+    /* Establishing a connection to the database */
+    $link = connect();
     
-    $results = "SELECT 
-                    * 
-                FROM 
-                    Crowd
-                ORDER BY RAND() LIMIT 1";
-    
-    
-    $rows = mysqli_query($list, $results);
+    /* Randomly select a row from the table */
+    $results = "SELECT * FROM Crowd ORDER BY RAND() LIMIT 1"; 
+    $rows = mysqli_query($link, $results);
     $row = mysqli_fetch_assoc($rows);
 
-    if (!isset($_SESSION["title"])) {
+    if (!isset($_SESSION["title"])  && !empty($_POST['title'])) {
         $_SESSION["title"] = $row['title'];
     }
 
-    if (!isset($_SESSION["one"])) {
+    if (!isset($_SESSION["one"]) && !empty($_POST['one'])) {
         $_SESSION["one"] = $row['optionOne'];
     }
 
-    if (!isset($_SESSION["two"])) {
+    if (!isset($_SESSION["two"]) && !empty($_POST['two'])) {
         $_SESSION["two"] = $row['optionTwo'];
     }
 
@@ -59,14 +39,6 @@
     if (!isset($_SESSION["four"])) {
         $_SESSION["four"] = $row['optionFour'];
     }
-
-    /*
-    $title = htmlspecialchars($row['title'], ENT_QUOTES);
-    $one = htmlspecialchars($row['optionOne']);
-    $two = htmlspecialchars($row['optionTwo']);
-    $three = htmlspecialchars($row['optionThree']);
-    $four = htmlspecialchars($row['optionFour']); */
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,37 +73,40 @@
 <body id="user">
 
 <div class="container-fluid">
-
-<?php echo '<h1 class="userH1">' . $row['title'] . '</h1>'; ?>
+    <h1 class="userH1"> <?php echo $row['title']; ?></h1>
     
-<div class="formInput row">
-<form name="selection" action=" " method="get" onsubmit="return validateRadio()">   
-    <div class="form-check">
-        <?php echo '<input class="form-check-input" type="radio" name="choice" value="'  . $row['optionOne'] .  '">' . $row['optionOne'] . "<br>"; ?>
-    </div>
-    <div class="form-check">
-        <?php echo '<input class="form-check-input" type="radio" name="choice" value="' . $row['optionTwo'] . '">' . $row['optionTwo'] . "<br>"; ?>
-    </div>
-    <?php
-        if($row['optionThree'] != NULL){
-            echo '<div class="form-check">';
-                echo '<input type="radio" name="choice" value="' . $row['optionThree'] . '">' . $row['optionThree'] . "<br>";
-            echo '</div>';
-        } 
+    <div class="formInput row">
+        <form name="selection" action=" " method="get" onsubmit="return validateRadio()">   
+            <div class="form-check">
+                <?php echo '<input class="form-check-input" type="radio" name="choice" value="'  
+                . $row['optionOne'] .  '">' . $row['optionOne'] . "<br>"; ?>
+            </div>
+            <div class="form-check">
+                <?php echo '<input class="form-check-input" type="radio" name="choice" value="' 
+                . $row['optionTwo'] . '">' . $row['optionTwo'] . "<br>"; ?>
+            </div>
+            <?php
+                if($row['optionThree'] != NULL){
+                    echo '<div class="form-check">';
+                        echo '<input type="radio" name="choice" value="' 
+                        . $row['optionThree'] . '">' . $row['optionThree'] . "<br>";
+                    echo '</div>';
+                } 
 
-        if($row['optionFour'] != NULL){
-            echo '<div class="form-check">';
-                echo '<input type="radio" name="choice" value="' . $row['optionFour'] . '">' . $row['optionFour'] . "<br>";
-            echo '</div>';
-        }
-    ?>
-    <div class="wrapper2">
-        <input type="Submit" class="btn btn-default" name="submit" value="Vote">
-        <a href="index.php" class="btn btn-default">Home</a>
+                if($row['optionFour'] != NULL){
+                    echo '<div class="form-check">';
+                        echo '<input type="radio" name="choice" value="' 
+                        . $row['optionFour'] . '">' . $row['optionFour'] . "<br>";
+                    echo '</div>';
+                }
+                mysqli_close($link);
+            ?>
+            <div class="wrapper2">
+                <input type="Submit" class="btn btn-default" name="submit" value="Vote">
+                <a href="index.php" class="btn btn-default">Home</a>
+            </div>
+        </form> 
     </div>
-</form> 
-    </div>
-</div>
 </div>
 </body>
 </html>
