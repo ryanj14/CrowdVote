@@ -1,9 +1,9 @@
 <!-- 
     userChoice.php
     Author: Ryan Joseph
-    Version: 1.1
-    Date: 6/25/2018
-    The page where the user can see their option results
+    Version: 1.2
+    Date: 7/4/2018
+    Added mysqli_real_escaped_string to fix the PHP and MySQL connection
 -->
 <?php
     session_start();
@@ -25,35 +25,34 @@
     }
 
     if (isset($_SESSION["choice"])) {
-        $option = $_SESSION["choice"];
+        $option = mysqli_real_escape_string($list, $_SESSION["choice"]);
     } else {
         echo "error";
     }
 
     if (isset($_SESSION["one"])) {
-        $value1 = $_SESSION["one"];
+        $value1 = mysqli_real_escape_string($list, $_SESSION["one"]);
     } else {
         echo "error";
     }
 
     if (isset($_SESSION["two"])) {
-        $value2 = $_SESSION["two"];
+        $value2 = mysqli_real_escape_string($list, $_SESSION["two"]);
     } else {
         echo "error";
     }
     
     if (isset($_SESSION["three"])) {
-        $value3 = $_SESSION["three"];
+        $value3 = mysqli_real_escape_string($list, $_SESSION["three"]);
     } else {
         echo "error";
     }
 
     if (isset($_SESSION["four"])) {
-        $value4 = $_SESSION["four"];
+        $value4 = mysqli_real_escape_string($list, $_SESSION["four"]);
     } else {
         echo "error";
     }
-
     
     unset($_SESSION["title"]);
     unset($_SESSION["option"]);
@@ -63,17 +62,27 @@
     unset($_SESSION["three"]);
     unset($_SESSION["four"]); 
 
-    $results = "SELECT 
-                    * 
-                FROM 
-                    Crowd
-                WHERE
-                    title = '$title' ";
+    $query = "SELECT * FROM Crowd WHERE title LIKE ? LIMIT 1"; 
+    
+    /* create a prepared statement  */
+    if ($stmt = mysqli_prepare($list, $query)) {
 
-    $rows2 = mysqli_query($list, $results);
-    $row = mysqli_fetch_assoc($rows2);
+        /* bind parameters for markers */
+        mysqli_stmt_bind_param($stmt, "s", $title);
 
-    if(($option == $value1) && ($value == 'oneVal')) {
+        /* execute query */
+        mysqli_stmt_execute($stmt);
+
+        $results = mysqli_stmt_get_result($stmt);
+
+        $row = mysqli_fetch_assoc($results);
+    } else {
+        echo "Error with prepare statement!\n";
+        mysqli_close($list);
+        die();
+    } 
+
+    if (($option == $value1) && ($value == 'oneVal')) {
         $selected = $row['oneVal'];
     } 
 
@@ -81,7 +90,7 @@
         $selected = $row['twoVal'];    
     } 
 
-    if (($option == $value3) && ($value == 'threeVal')){
+    if (($option == $value3) && ($value == 'threeVal')) {
         $selected = $row['threeVal'];
     } 
 
@@ -91,13 +100,12 @@
 
     $selected += 1;
 
-    $sql2 = "
-            UPDATE
+    $sql2 = "UPDATE
                 Crowd
             SET
-                $value=$selected
+                $value = $selected
             WHERE
-                title = '$title' ";
+                title = '$title' LIMIT 1";
 
     if (!mysqli_query($list, $sql2)) {
         echo "Error updating record: " . mysqli_error($list);
@@ -174,6 +182,10 @@
         echo '<p>' . floor(($row['fourVal'] * 100) / $count) . '%</p>';
     echo '</div>';
     }
+
+     /* close statement */
+     //mysqli_stmt_close($stmt);
+     mysqli_close($list);
 ?>
     <div class="tally">
         <?php echo "Total votes: " . $count . "<br>"; ?>

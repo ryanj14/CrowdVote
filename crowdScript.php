@@ -30,7 +30,7 @@
             mysqli_stmt_close($stmt);
             
             mysqli_close($list);
-            echo "<meta http-equiv='refresh' content='0'>";
+            header("Location: index.php"); 
         } else {
             echo "Error with prepare statement!\n";
             mysqli_close($list);

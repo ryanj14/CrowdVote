@@ -60,6 +60,13 @@
         $_SESSION["four"] = $row['optionFour'];
     }
 
+    /*
+    $title = htmlspecialchars($row['title'], ENT_QUOTES);
+    $one = htmlspecialchars($row['optionOne']);
+    $two = htmlspecialchars($row['optionTwo']);
+    $three = htmlspecialchars($row['optionThree']);
+    $four = htmlspecialchars($row['optionFour']); */
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -118,7 +125,7 @@
             echo '</div>';
         }
     ?>
-    <div class="wrapper">
+    <div class="wrapper2">
         <input type="Submit" class="btn btn-default" name="submit" value="Vote">
         <a href="index.php" class="btn btn-default">Home</a>
     </div>
