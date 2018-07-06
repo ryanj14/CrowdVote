@@ -110,6 +110,7 @@
     if (!mysqli_query($list, $sql2)) {
         echo "Error updating record: " . mysqli_error($list);
     }
+    mysqli_stmt_close($stmt);
     mysqli_close($list);
 ?>
 <!DOCTYPE html>
@@ -184,7 +185,6 @@
     }
 
      /* close statement */
-     //mysqli_stmt_close($stmt);
      mysqli_close($list);
 ?>
     <div class="tally">

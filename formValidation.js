@@ -45,14 +45,23 @@ function validateOption2() {
 }
 
 function validateRadio(){
-    var radios = document.getElementsByName("choice");
+    var radios1 = document.getElementsByName("choice1");
+    var radios2 = document.getElementsByName("choice2");
+    var radios3 = document.getElementsByName("choice3");
+    var radios4 = document.getElementsByName("choice4");
     var formValid = false;
-    var i = 0;
 
-    for(var i = 0; i < radios.length;i++){
-        if(radios[i].checked == true){
-            formValid = true;    
-        }
+    if(this.radios1.checked == true){
+        formValid = true;    
+    }
+    if(this.radios2.checked == true){
+        formValid = true;    
+    }
+    if(this.radios3.checked == true){
+        formValid = true;    
+    }
+    if(this.radios4.checked == true){
+        formValid = true;    
     }
 
     if (!formValid){  
