@@ -10,7 +10,6 @@
     require_once('mysqli_connect.php');
     include 'functions.php';
     include 'userScript.php';
-    ob_start();
 
     /* Establishing a connection to the database */
     $link = connect();
