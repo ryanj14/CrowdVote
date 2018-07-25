@@ -77,24 +77,24 @@
     <div class="formInput row">
         <form name="selection" action=" " method="get" onsubmit="return validateRadio()">   
             <div class="form-check">
-                <?php echo '<input class="form-check-input" type="radio" name="choice1" value="'  
+                <?php echo '<input class="form-check-input" type="radio" name="choice" value="'  
                 . $row['optionOne'] .  '">' . $row['optionOne'] . "<br>"; ?>
             </div>
             <div class="form-check">
-                <?php echo '<input class="form-check-input" type="radio" name="choice2" value="' 
+                <?php echo '<input class="form-check-input" type="radio" name="choice" value="' 
                 . $row['optionTwo'] . '">' . $row['optionTwo'] . "<br>"; ?>
             </div>
             <?php
                 if($row['optionThree'] != NULL){
                     echo '<div class="form-check">';
-                        echo '<input type="radio" name="choice3" value="' 
+                        echo '<input type="radio" name="choice" value="' 
                         . $row['optionThree'] . '">' . $row['optionThree'] . "<br>";
                     echo '</div>';
                 } 
 
                 if($row['optionFour'] != NULL){
                     echo '<div class="form-check">';
-                        echo '<input type="radio" name="choice4" value="' 
+                        echo '<input type="radio" name="choice" value="' 
                         . $row['optionFour'] . '">' . $row['optionFour'] . "<br>";
                     echo '</div>';
                 }
