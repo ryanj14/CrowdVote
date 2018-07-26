@@ -1,10 +1,3 @@
-<!-- 
-    user.php
-    Author: Ryan Joseph
-    Version: 1.2
-    Date: 7/5/2018
-    The page where the user can select an option
--->
 <?php
     session_start();
     require_once('mysqli_connect.php');
@@ -15,8 +8,12 @@
     $link = connect();
     
     /* Randomly select a row from the table */
-    $results = "SELECT * FROM Crowd ORDER BY RAND() LIMIT 1"; 
-    $rows = mysqli_query($link, $results);
+    $results = "SELECT * FROM Crowd ORDER BY RAND() LIMIT 1";
+
+    if(($rows = mysqli_query($link, $results)) == FALSE) {
+        die("query failed: " . mysqli_error($link));
+    }
+
     $row = mysqli_fetch_assoc($rows);
 
     if (!isset($_SESSION["title"])  && empty($_SESSION['title'])) {

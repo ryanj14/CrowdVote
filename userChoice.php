@@ -1,10 +1,3 @@
-<!-- 
-    userChoice.php
-    Author: Ryan Joseph
-    Version: 1.2
-    Date: 7/4/2018
-    Added mysqli_real_escaped_string to fix the PHP and MySQL connection
--->
 <?php
     session_start();
     require_once('mysqli_connect.php');
@@ -22,6 +15,7 @@
         $value = $_SESSION["option"];
     } else {
         echo "error: option\n";
+        echo "Option: " . $_SESSION["option"];
     }
 
     if (isset($_SESSION["choice"])) {

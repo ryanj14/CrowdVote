@@ -13,12 +13,13 @@
         $three  =    $_POST['option3'];
         $four   =    $_POST['option4']; 
 
-        /* create a prepared statement */
-        if ($stmt = mysqli_prepare($list, 
-               "INSERT INTO Crowd 
+        $query = "INSERT INTO Crowd 
                     (id, `title`, `optionOne`, `optionTwo`, `optionThree`, `optionFour`)
-                VALUES 
-                    (NULL, ?, ?, ?, ?, ?)")) {
+                  VALUES 
+                    (NULL, ?, ?, ?, ?, ?)";
+
+        /* create a prepared statement */
+        if ($stmt = mysqli_prepare($list, $query)) {
 
             /* bind parameters for markers */
             mysqli_stmt_bind_param($stmt, "sssss", $title, $one, $two, $three, $four);
@@ -26,10 +27,13 @@
             /* execute query */
             mysqli_stmt_execute($stmt);
 
+            mysqli_free_result($stmt);
+
             /* close statement */
             mysqli_stmt_close($stmt);
             
             mysqli_close($list);
+
             header("Location: index.php"); 
         } else {
             echo "Error with prepare statement!\n";
