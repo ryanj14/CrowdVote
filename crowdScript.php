@@ -27,16 +27,21 @@
             /* execute query */
             mysqli_stmt_execute($stmt);
 
+            /* Freeing memory associated with the results */
             mysqli_free_result($stmt);
 
             /* close statement */
             mysqli_stmt_close($stmt);
             
+            /* Closing the connection to the database */
             mysqli_close($list);
 
+            /* Redirects the user to the home page */
             header("Location: index.php"); 
         } else {
             echo "Error with prepare statement!\n";
+
+            /* Closing the connection to the database */
             mysqli_close($list);
             die();
         }
