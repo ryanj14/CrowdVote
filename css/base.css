@@ -115,7 +115,7 @@ form.userForm a {
 }
 
 /* userChoice.php section */
-.container-fluid > h2 {
+main > h2 {
     text-align: center;
     margin-bottom: 15%;
 }
