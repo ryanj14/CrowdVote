@@ -5,9 +5,10 @@
     Date: 6/25/2018 
 -->
 <!DOCTYPE html>
-<html>   
+<html lang="en">   
     <head>
         <meta charset="utf-8">
+        <meta name="Description" content="Crowd Vote landing page.">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -20,19 +21,17 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <!-- Latest compiled and minified CSS -->
-        <link   href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
-                rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
-                crossorigin="anonymous">
-
-        <!-- Optional theme -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" 
-                integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" 
-                crossorigin="anonymous"></script>
+        <link 
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+            rel="stylesheet" 
+            integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
+            crossorigin="anonymous"
+        >
         
         <!-- Crowd Vote form validation -->
         <script type="text/javascript" src="formValidation.js"></script>
     </head>
-<body lang="en">
+<body>
     <div class="container-fluid">
     <h1>Crowd Vote</h1>
         <div class="formInput row">
