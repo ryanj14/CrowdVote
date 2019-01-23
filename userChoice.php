@@ -111,6 +111,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="Description" content="Crowd Vote results page.">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -123,20 +124,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <!-- Latest compiled and minified CSS -->
-        <link   rel="stylesheet"  
-                href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-                integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"     
-                crossorigin="anonymous">
-
-        <!-- Optional theme -->
-        <link   rel="stylesheet"  
-                href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
-                integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
-                crossorigin="anonymous">
+        <link 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
+        crossorigin="anonymous"
+        >
     </head>
 <body>
 
-<main class="container-fluid">
+<main>
 <h1>Crowd Results</h1> 
 <?php  
     $results2 = "SELECT 
