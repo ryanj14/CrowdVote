@@ -27,9 +27,6 @@
             /* execute query */
             mysqli_stmt_execute($stmt);
 
-            /* Freeing memory associated with the results */
-            mysqli_free_result($stmt);
-
             /* close statement */
             mysqli_stmt_close($stmt);
             
